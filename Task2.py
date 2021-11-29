@@ -24,18 +24,18 @@ class whatjob():
     
     def __init__(self,train_path='data/x0pa_ds_interview_round_2_train.xlsx',test_path='data/x0pa_ds_interview_round_2_test.xlsx',inputFeat='Job Title',Target='Type'):
         """
-        
+        Initialization for whatJob 
 
         Parameters
         ----------
-        train_path : TYPE, optional
-            DESCRIPTION. The default is 'data/x0pa_ds_interview_round_2_train.xlsx'.
-        test_path : TYPE, optional
-            DESCRIPTION. The default is 'data/x0pa_ds_interview_round_2_test.xlsx'.
-        inputFeat : TYPE, optional
-            DESCRIPTION. The default is 'Job Title'.
-        Target : TYPE, optional
-            DESCRIPTION. The default is 'Type'.
+        train_path : STR, optional
+            Path for training set. The default is 'data/x0pa_ds_interview_round_2_train.xlsx'.
+        test_path : STR, optional
+            Path for testing set. The default is 'data/x0pa_ds_interview_round_2_test.xlsx'.
+        inputFeat : STR, optional
+            Input Feature Column Name. The default is 'Job Title'.
+        Target : STR, optional
+            Target Column Name. The default is 'Type'.
 
         Returns
         -------
@@ -43,7 +43,7 @@ class whatjob():
 
         """
 
-        self.pkl_path='pkl_files/'
+        self.pkl_path='pkl_files/' 
         self.df_train_path=train_path
         self.df_test_path=test_path
         self.train_df=pd.read_excel(self.df_train_path)
@@ -53,16 +53,16 @@ class whatjob():
     
     def getData(self):
         """
-        
+        Helper Function to get training, validation and testing data
 
         Returns
         -------
-        train_set : TYPE
-            DESCRIPTION.
-        validation_set : TYPE
-            DESCRIPTION.
-        TYPE
-            DESCRIPTION.
+        train_set : PANDAS DATAFRAME
+            Training data-set.
+        validation_set : PANDAS DATAFRAME
+            Validation data-set.
+        PANDAS DATAFRAME
+            Testing data-set.
 
         """
         
@@ -71,19 +71,19 @@ class whatjob():
     
     def cleanText(self,df,train_flag=True):
         """
-        
+        Helper function to clean the text based on commonsense and nltk library
 
         Parameters
         ----------
-        df : TYPE
-            DESCRIPTION.
-        train_flag : TYPE, optional
-            DESCRIPTION. The default is True.
+        df : PANDAS DATAFRAME
+            Pandas DataFrame to be cleaned.
+        train_flag : BOOL, optional
+            True if cleaning text for training set, else False. The default is True.
 
         Returns
         -------
-        df_new : TYPE
-            DESCRIPTION.
+        df_new : PANDAS DATAFRAME
+            Cleaned Pandas DataFrame.
 
         """
         
@@ -92,7 +92,7 @@ class whatjob():
         df_new[self.inputFeat] = df_new[self.inputFeat].apply(lambda text: self.remove_non_ascii(text))
         #remove number
         df_new[self.inputFeat] = df_new[self.inputFeat].apply(lambda text: self.remove_num(text))
-        #lowwer case
+        #lower case
         df_new[self.inputFeat] = df_new[self.inputFeat].str.lower()
         #remove_punctuation
         df_new[self.inputFeat] = df_new[self.inputFeat].apply(lambda text: self.remove_punctuation(text,train=train_flag))
@@ -107,53 +107,56 @@ class whatjob():
 
     def remove_non_ascii(self,text):
         """
+        Helper Function to remove non ascii characters
         
-
+        
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
+        text : STR
+            Original Text.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
+        STR
+            Cleaned Text.
 
         """
         return "".join(c for c in text if ord(c)<128)
     
     def remove_num(self,text):
         """
+        Helper Function to remove numbers
         
-
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
+        text : STR
+            Original Text.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
+        STR
+            Cleaned Text.
 
         """
         return re.sub(r'\d+', '', text)
     
     def remove_punctuation(self,text,train=False):
         """
-        
+        Helper Function to remove punctuation
 
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
-        train : TYPE, optional
-            DESCRIPTION. The default is False.
+        text : STR
+            Original Text.
+        train : BOOL, optional
+              True, if cleaning text for training set, else False. The default is True.
 
+    
         Returns
         -------
-        TYPE
-            DESCRIPTION.
+        STR
+            Cleaned Text.
+
 
         """
         
@@ -170,21 +173,24 @@ class whatjob():
 
     def remove_stopwords(self,text,train=False):
         """
-        
+        Helper Function to remove stop words
 
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
-        train : TYPE, optional
-            DESCRIPTION. The default is False.
+        text : STR
+            Original Text.
+        train : BOOL, optional
+              True, if cleaning text for training set, else False. The default is True.
 
+    
         Returns
         -------
-        TYPE
-            DESCRIPTION.
+        STR
+            Cleaned Text.
+
 
         """
+       
         STOPWORDS = set(stopwords.words('english'))
       
         return " ".join([word for word in str(text).split() if word not in STOPWORDS])
@@ -192,18 +198,18 @@ class whatjob():
     
     def lemmatize_words(self,text):
         """
+        Helper Function to lemmatize words
         
-
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
+        text : STR
+            Original Text.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
-
+        STR
+            Cleaned Text.
+            
         """
         lemmatizer = WordNetLemmatizer()
         wordnet_map = {"N":wordnet.NOUN, "V":wordnet.VERB, "J":wordnet.ADJ, "R":wordnet.ADV}
@@ -212,18 +218,18 @@ class whatjob():
    
     def remove_extra_whitespace_tabs(self,text):
         """
+        Helper Function to remove extra white-space tabs
         
-
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
+        text : STR
+            Original Text.
 
         Returns
         -------
-        TYPE
-            DESCRIPTION.
-
+        STR
+            Cleaned Text.
+            
         """
         pattern = r'^\s*|\s\s*'
         return re.sub(pattern, ' ', text).strip()
@@ -231,17 +237,17 @@ class whatjob():
     
     def batchTraining(self,traindf):
         """
-        
+        Function to do batch training based on the training data-set
 
         Parameters
         ----------
-        traindf : TYPE
-            DESCRIPTION.
+        traindf : PANDAS DATAFRAME
+            Training DataFrame.
 
         Returns
         -------
-        clf : TYPE
-            DESCRIPTION.
+        clf : OBJECT
+             Fitted Classifier.
 
         """
         
@@ -268,19 +274,19 @@ class whatjob():
     
     def valBatchEval(self,valdf):
         """
-        
+        Function to do evaluate trained model on validation set and obtain/plot confusion matrix report.
 
         Parameters
         ----------
-        valdf : TYPE
-            DESCRIPTION.
+        valdf : PANDAS DATAFRAME
+            Validation DataFrame.
 
         Returns
         -------
-        y_true : TYPE
-            DESCRIPTION.
-        y_pred : TYPE
-            DESCRIPTION.
+        y_true : NUMPY ARRAY
+            Numpy array of True values of the target column.
+        y_peed : NUMPY ARRAY
+            Numpy array of Predicted values of the target column.
 
         """
                
@@ -297,11 +303,11 @@ class whatjob():
         with open(self.pkl_path+'clf.pkl', 'rb') as f:
             clf = pickle.load(f)  
     
-        y_pred = clf.predict(df_text_tfidf)
+        y_peed = clf.predict(df_text_tfidf)
         y_true=np.array(valdf[self.Target])
-        print(metrics.classification_report(y_true, y_pred, digits=3))
-        y_unique = np.unique(y_pred)
-        cm = metrics.confusion_matrix(y_true, y_pred)
+        print(metrics.classification_report(y_true, y_peed, digits=3))
+        y_unique = np.unique(y_peed)
+        cm = metrics.confusion_matrix(y_true, y_peed)
         cm_df = pd.DataFrame(cm,
                              index = y_unique, 
                              columns = y_unique)
@@ -310,25 +316,27 @@ class whatjob():
         plt.figure(figsize=(15,15))
         sns.heatmap(cm_df, annot=True,fmt='g')
         plt.title('Confusion Matrix')
-        plt.ylabel('Actal Values')
+        plt.ylabel('Actual Values')
         plt.xlabel('Predicted Values')
         plt.show()
         
-        return y_true,y_pred
+        return y_true,y_peed
     
     def testBatch(self,testdf):
         """
-        
+         Function to do batch testing based on the trained model
+
 
         Parameters
         ----------
-        testdf : TYPE
-            DESCRIPTION.
+        testdf : PANDAS DATAFRAME
+            Testing DataFrame.
+
 
         Returns
         -------
-        y_pred : TYPE
-            DESCRIPTION.
+        y_peed : NUMPY ARRAY
+            Numpy array of Predicted values for the testing data-set.
 
         """
                
@@ -345,24 +353,24 @@ class whatjob():
         with open(self.pkl_path+'clf.pkl', 'rb') as f:
             clf = pickle.load(f)  
     
-        y_pred = clf.predict(df_text_tfidf)
+        y_peed = clf.predict(df_text_tfidf)
         
     
-        return y_pred  
+        return y_peed  
     
-    def testSample(self,text):
+    def getPrediction(self,text):
         """
-        
+        Function to run classifier on single user input
 
         Parameters
         ----------
-        text : TYPE
-            DESCRIPTION.
+        text : STR
+            User input for the Job Title.
 
         Returns
         -------
-        y_pred : TYPE
-            DESCRIPTION.
+        y_peed : STR
+            Predicted Job Type based on the trained classifier.
 
         """
    
@@ -391,9 +399,9 @@ class whatjob():
         with open(self.pkl_path+'clf.pkl', 'rb') as f:
             clf = pickle.load(f)  
     
-        y_pred = clf.predict(df_text_tfidf)
+        y_peed = clf.predict(df_text_tfidf)
   
-        return y_pred
+        return y_peed
     
     
 if __name__ == '__main__':
@@ -405,17 +413,17 @@ if __name__ == '__main__':
     train_df_clean=whatJobClass.cleanText(train_df,train_flag=True)
     clf=whatJobClass.batchTraining(train_df_clean)
         
-    # # #validatoin
+    # # #validation
     valid_df_clean=whatJobClass.cleanText(valid_df,train_flag=False)
     _,_=whatJobClass.valBatchEval(valid_df_clean)
   
     # # testing
     test_df_clean=whatJobClass.cleanText(test_df,train_flag=False)
-    y_pred=whatJobClass.testBatch(valid_df_clean)
+    y_peed=whatJobClass.testBatch(valid_df_clean)   
    
     #  single testing
     job_title='Technical Lead (QA Automation)'
-    y_pred_single=whatJobClass.testSample(job_title)
-    print(y_pred_single)
+    y_peed_single=whatJobClass.getPrediction(job_title)
+    print(y_peed_single)
    
     
