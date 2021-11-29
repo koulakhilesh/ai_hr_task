@@ -423,7 +423,8 @@ if __name__ == '__main__':
     #testBatch
     test_df_clean=whatJobClass.cleanText(test_df,train_flag=False)
     y_pred=whatJobClass.testBatch(test_df_clean)
-   
+    pd.DataFrame(y_pred).to_csv("test_y_pred.csv")
+
     #getPrediction
     # job_title='Technical Lead (QA Automation)'
     # y_pred_single=whatJobClass.getPrediction(job_title)
