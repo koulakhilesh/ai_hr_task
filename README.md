@@ -1,6 +1,7 @@
 # X0PA Task
 ## TASK 1
 *Your task is to write the following queries in SQL based on the Database Schema (see [sqlSchema.sql](https://github.com/koulakhilesh/x0pa-task/blob/master/sqlSchema.sql)) . The database schema is written in PostgreSQL. However, you are free to use any SQL dialect but please specify the  SQL dialect you are using*.
+
 **USING MYSQL**
 
 a) *Write a query to print the total number of open positions (open positions = vacancies - # of hired candidates) for each company as of the current date.*
@@ -27,4 +28,4 @@ b) *Write a query to print the industry, company name, and total number of local
 preferred).*
 **Ah! for this I am unable to implement FastAPI as I haven't used it till now in my work. But this can be implemented with functions already developed in [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py) (also see [Task2-Notebook](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_NB.ipynb)) . Had lot of trouble with Docker, Uvicorn and FastAPI, apologies!**
 
-**Finally please see the [requirements.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python library needed to run code for task 2**
+**Finally please see the [requirements.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python library needed to run code for task 2.**
