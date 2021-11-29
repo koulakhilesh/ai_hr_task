@@ -28,4 +28,4 @@ b) *Write a query to print the industry, company name, and total number of local
 preferred).*
 **Ah! for this I am unable to implement FastAPI as I haven't used it till now in my work. But this can be implemented with functions already developed in [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py) (also see [Task2-Notebook](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_NB.ipynb)) . Had lot of trouble with Docker, Uvicorn and FastAPI, apologies!**
 
-**Finally please see the [requirements.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python library needed to run code for task 2**
+**Finally please see the [requirements.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python library needed to run code for task 2.**
