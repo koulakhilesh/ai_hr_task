@@ -29,4 +29,4 @@ will be to:*
 preferred).*
 **Ah for this I am unable to implemennt FastAPI as I haven't used it till now in my work. But this can be implemeneted with functions already developed in [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py). Had lot of troble with Docker, Uvicorn and FastAPI, apoligies!**
 
-**Finally please see the [reurememt.txt] for all the required python lirres needed to run this**
+**Finally please see the [reurememt.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python lirres needed to run code for task 2**
