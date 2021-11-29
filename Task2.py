@@ -399,31 +399,34 @@ class whatjob():
         with open(self.pkl_path+'clf.pkl', 'rb') as f:
             clf = pickle.load(f)  
     
-        y_peed = clf.predict(df_text_tfidf)
+        y_pred = clf.predict(df_text_tfidf)
   
-        return y_peed
+        return y_pred
     
     
 if __name__ == '__main__':
-    
+    #initialization
     whatJobClass=whatjob()
-    train_df,valid_df,test_df=whatJobClass.getData()
     
-    # #training
-    train_df_clean=whatJobClass.cleanText(train_df,train_flag=True)
-    clf=whatJobClass.batchTraining(train_df_clean)
-        
-    # # #validation
-    valid_df_clean=whatJobClass.cleanText(valid_df,train_flag=False)
-    _,_=whatJobClass.valBatchEval(valid_df_clean)
-  
-    # # testing
+    #getData
+    train_df,valid_df,test_df=whatJobClass.getData()   
+   
+    #batchTraining
+    # train_df_clean=whatJobClass.cleanText(train_df,train_flag=True)
+    # clf=whatJobClass.batchTraining(train_df_clean)
+    
+    
+    #valBatchEval
+    # valid_df_clean=whatJobClass.cleanText(valid_df,train_flag=False)
+    # _,_=whatJobClass.valBatchEval(valid_df_clean)
+    
+    #testBatch
     test_df_clean=whatJobClass.cleanText(test_df,train_flag=False)
-    y_peed=whatJobClass.testBatch(valid_df_clean)   
+    y_pred=whatJobClass.testBatch(test_df_clean)
    
-    #  single testing
-    job_title='Technical Lead (QA Automation)'
-    y_peed_single=whatJobClass.getPrediction(job_title)
-    print(y_peed_single)
-   
+    #getPrediction
+    # job_title='Technical Lead (QA Automation)'
+    # y_pred_single=whatJobClass.getPrediction(job_title)
+    # print(y_pred_single)
     
+
