@@ -1,6 +1,7 @@
 # X0PA Task
 ## TASK 1
 *Your task is to write the following queries in SQL based on the Database Schema (see [sqlSchema.sql](https://github.com/koulakhilesh/x0pa-task/blob/master/sqlSchema.sql)) . The database schema is written in PostgreSQL. However, you are free to use any SQL dialect but please specify the  SQL dialect you are using*.
+
 **USING MYSQL**
 
 a) *Write a query to print the total number of open positions (open positions = vacancies - # of hired candidates) for each company as of the current date.*
