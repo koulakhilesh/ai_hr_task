@@ -13,20 +13,18 @@ b) *Write a query to print the industry, company name, and total number of local
 
 ## TASK 2 
 ### *Problem Statement*
-*The core of X0PA products often involve APIs around machine learning algorithms and NLP. In real world data especially in human resources, they come in different schemas and it is important to standardize them into one. For this problem, we will be looking into classifying any job titles into job
-functions. Initially, we tried to train a model that classify job titles into all job functions. However, we found out that the information technology job functions are too general and it is important for us to break them further down into various subclasses. By breaking them down, we are then able to match
-candidates to jobs to a higher accuracy. This problem will test your ability to build a basic NLP model based on a given dataset. Your end task
-will be to:* 
+*The core of X0PA products often involve APIs around machine learning algorithms and NLP. In real world data especially in human resources, they come in different schemas and it is important to standardize them into one. For this problem, we will be looking into classifying any job titles into job functions. Initially, we tried to train a model that classify job titles into all job functions. However, we found out that the information technology job functions are too general and it is important for us to break them further down into various subclasses. By breaking them down, we are then able to match candidates to jobs to a higher accuracy. This problem will test your ability to build a basic NLP model based on a given dataset. Your end task will be to:* 
+
 * *develop a model to predict one of the 16 classes (see Variables Schema);*
 
-**Main File with class object is written in python and available at [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py). It consist of  functions for initilzation, data acqustion, cleaning of the text, and batch trainiing, validation evaluation, batch testing, single predition. See [Task2-docstring](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_docstring.txt). GradientBoostingClassifier is used for modellig classifier for this task**
+**Main File with class object is written in python and available at [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py). It consist of  functions for initialization, data acquisition, cleaning of the text, and batch training, validation evaluation, batch testing, single prediction. See [Task2-docstring](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_docstring.txt). GradientBoostingClassifier is used for modeling classifier for this task**
 
 * *provide justification for model evaluation and report your results;*
 
-**Since it mutli-classification, confustion matrix and F1 score is obtained on validation set. See [Task2-NB](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_NB.ipynb) for display for evaluation results of validation set. Also results for the testing dataset can be obtained from [Test_Results](https://github.com/koulakhilesh/x0pa-task/blob/master/test_y_pred.csv)**
+**Since it multi-classification, confusion matrix and F1 score is obtained on validation set. See [Task2-Notebook](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_NB.ipynb) for display for evaluation results of validation set. Also results for the testing data-set can be obtained from [Test_Results](https://github.com/koulakhilesh/x0pa-task/blob/master/test_y_pred.csv)**
 
 * *deploy your model in the form of an API endpoint (any API framework will do, but FastAPI is
 preferred).*
-**Ah for this I am unable to implemennt FastAPI as I haven't used it till now in my work. But this can be implemeneted with functions already developed in [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py). Had lot of troble with Docker, Uvicorn and FastAPI, apoligies!**
+**Ah! for this I am unable to implement FastAPI as I haven't used it till now in my work. But this can be implemented with functions already developed in [TASK_2.py](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2.py) (also see [Task2-Notebook](https://github.com/koulakhilesh/x0pa-task/blob/master/Task2_NB.ipynb)) . Had lot of trouble with Docker, Uvicorn and FastAPI, apologies!**
 
-**Finally please see the [reurememt.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python lirres needed to run code for task 2**
+**Finally please see the [requirements.txt](https://github.com/koulakhilesh/x0pa-task/blob/master/requirements.txt) for all the required python library needed to run code for task 2**
